@@ -23,10 +23,9 @@ rsync -va ${bids_dir} ${TMPDIR}
 
 # cd into WD, run script
 cd ${TMPDIR}/${wd_dir##*/}
-python main_forrest.py
+bash preprocess_video_loop.sh
 
 # data back
 rsync -va --update ${TMPDIR}/${bids_dir##*/}/* ${bids_dir}
-
-
+rsync -va --update ${TMPDIR}/${wd_dir##*/}/verb_dir ${bids_dir}
 
